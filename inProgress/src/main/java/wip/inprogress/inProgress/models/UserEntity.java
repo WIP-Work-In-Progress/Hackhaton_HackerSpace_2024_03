@@ -4,6 +4,9 @@ import lombok.*;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -17,6 +20,9 @@ public class UserEntity {
     private String firstName;
     private String lastName;
     private String roles;
+
+    @Relationship(type = "HAS", direction = Relationship.Direction.OUTGOING)
+    private List<Experience> experiences;
 
     public boolean isAdmin() {
         return roles.contains("ADMIN");
