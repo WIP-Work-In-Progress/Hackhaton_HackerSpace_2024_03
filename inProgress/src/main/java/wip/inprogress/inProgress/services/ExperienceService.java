@@ -3,6 +3,7 @@ package wip.inprogress.inProgress.services;
 import org.springframework.stereotype.Service;
 import wip.inprogress.inProgress.models.Experience;
 import wip.inprogress.inProgress.repositories.ExperienceRepository;
+import wip.inprogress.inProgress.requests.ExperienceRequest;
 
 @Service
 public class ExperienceService {
@@ -14,5 +15,9 @@ public class ExperienceService {
 
     public Experience findByName(String name) {
         return experienceRepository.findExperienceByName(name);
+    }
+
+    public void create(String experienceName) {
+        experienceRepository.createExperience(experienceName);
     }
 }

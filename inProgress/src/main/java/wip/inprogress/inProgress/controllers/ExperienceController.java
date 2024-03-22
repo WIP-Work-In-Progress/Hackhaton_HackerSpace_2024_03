@@ -1,11 +1,10 @@
 package wip.inprogress.inProgress.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import wip.inprogress.inProgress.models.Experience;
 import wip.inprogress.inProgress.repositories.ExperienceRepository;
+import wip.inprogress.inProgress.requests.ExperienceRequest;
 import wip.inprogress.inProgress.services.ExperienceService;
 
 @RestController
@@ -21,5 +20,12 @@ public class ExperienceController {
     @GetMapping("/{name}")
     Experience Get(@PathVariable String name) {
         return experienceService.findByName(name);
+    }
+
+    @PostMapping("/")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    ExperienceRequest Create(@RequestBody ExperienceRequest experienceRequest) {
+        experienceService.create(experienceRequest.getName());
+        return experienceRequest;
     }
 }
