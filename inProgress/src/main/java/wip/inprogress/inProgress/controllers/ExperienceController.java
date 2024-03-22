@@ -22,7 +22,7 @@ public class ExperienceController {
         return experienceService.findByName(name);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     @ResponseStatus(code = HttpStatus.CREATED)
     ExperienceRequest Create(@RequestBody ExperienceRequest experienceRequest) {
         experienceService.create(experienceRequest.getName());
