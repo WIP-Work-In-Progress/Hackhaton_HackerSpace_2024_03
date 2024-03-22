@@ -5,6 +5,8 @@ import wip.inprogress.inProgress.models.Experience;
 import wip.inprogress.inProgress.repositories.ExperienceRepository;
 import wip.inprogress.inProgress.requests.ExperienceRequest;
 
+import java.util.Optional;
+
 @Service
 public class ExperienceService {
     private final ExperienceRepository experienceRepository;
@@ -13,7 +15,7 @@ public class ExperienceService {
         this.experienceRepository = experienceRepository;
     }
 
-    public Experience findByName(String name) {
+    public Optional<Experience> findByName(String name) {
         return experienceRepository.findExperienceByName(name);
     }
 
