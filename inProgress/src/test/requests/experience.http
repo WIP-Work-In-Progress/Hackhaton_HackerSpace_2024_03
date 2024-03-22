@@ -1,3 +1,8 @@
+
+GET http://localhost:8080/api/experience
+
+###
+
 GET http://localhost:8080/api/experience/Programming
 Content-Type: application/json
 
@@ -9,3 +14,17 @@ Content-Type: application/json
 {
   "name": "Programming"
 }
+
+###
+
+PUT http://localhost:8080/api/experience/Programming
+Content-Type: application/json
+
+{
+  "name": "Programming2"
+}
+
+###
+
+DELETE http://localhost:8080/api/experience/Programming2
+Content-Type: application/json
