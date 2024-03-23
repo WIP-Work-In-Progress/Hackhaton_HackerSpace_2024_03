@@ -77,36 +77,36 @@ export default function MentorInfo() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 py-2">
-        <FormField
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 py-2">
+        {/* <FormField
           control={form.control}
           name="lookingFor"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Kogo szukasz?</FormLabel>
-              <RadioGroup
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-                className="flex flex-col space-y-1"
-              >
-                <FormItem className="flex items-center space-x-3 space-y-0">
-                  <FormControl>
-                    <RadioGroupItem value="mentors" />
-                  </FormControl>
-                  <FormLabel className="font-normal">Mentorów</FormLabel>
-                </FormItem>
-                <FormItem className="flex items-center space-x-3 space-y-0">
-                  <FormControl>
-                    <RadioGroupItem value="mentees" />
-                  </FormControl>
-                  <FormLabel className="font-normal">Podopiecznych</FormLabel>
-                </FormItem>
-              </RadioGroup>
-              <FormDescription>Z kim chcesz nawiązać kontakt?</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+            //     <FormItem>
+            //       <FormLabel>Kogo szukasz?</FormLabel>
+            //       <RadioGroup
+            //         onValueChange={field.onChange}
+            //         defaultValue={field.value}
+            //         className="flex flex-col space-y-1"
+            //       >
+            //         <FormItem className="flex items-center space-x-3 space-y-0">
+            //           <FormControl>
+            //             <RadioGroupItem value="mentors" />
+            //           </FormControl>
+            //           <FormLabel className="font-normal">Mentorów</FormLabel>
+            //         </FormItem>
+            //         <FormItem className="flex items-center space-x-3 space-y-0">
+            //           <FormControl>
+            //             <RadioGroupItem value="mentees" />
+            //           </FormControl>
+            //           <FormLabel className="font-normal">Podopiecznych</FormLabel>
+            //         </FormItem>
+            //       </RadioGroup>
+            //       <FormDescription>Z kim chcesz nawiązać kontakt?</FormDescription>
+            //       <FormMessage />
+            //     </FormItem>
+            //   )}
+          // /> */}
         {form.watch("skills").map((skill, index) => (
           <div key={index}>
             <FormItem>
