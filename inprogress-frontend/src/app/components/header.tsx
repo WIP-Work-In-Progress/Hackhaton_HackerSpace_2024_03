@@ -17,7 +17,9 @@ function Header() {
 
   return (
     <header className="flex justify-between p-2 bg-primary items-center min-h-14">
-      <div className="icon">InProgress</div>
+      <Link href="/">
+        <div className="icon">InProgress</div>
+      </Link>
       {isLoggedIn ? (
         <div className="flex gap-2">
           <Link href={"/swiper"}>

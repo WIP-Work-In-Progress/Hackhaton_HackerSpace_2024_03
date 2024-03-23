@@ -37,7 +37,12 @@ export default function SignUpForm() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    axios.post("http://localhost:8080/api/v1/auth/register", values);
+    axios.post("http://localhost:8080/api/v1/auth/register", {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      username: values.email,
+      password: values.password,
+    });
   }
 
   return (
@@ -107,9 +112,7 @@ export default function SignUpForm() {
             </FormItem>
           )}
         />
-        <div className="flex justify-end mr-2">
-          <Button type="submit">Zarejestruj się</Button>
-        </div>
+        <Button type="submit">Sign Up</Button>
       </form>
     </Form>
   );
