@@ -16,7 +16,7 @@ function Header() {
   }
 
   return (
-    <header className="flex justify-between p-2 bg-primary items-center">
+    <header className="flex justify-between p-2 bg-primary items-center min-h-14">
       <div className="icon">InProgress</div>
       {isLoggedIn ? (
         <div className="flex gap-2">
