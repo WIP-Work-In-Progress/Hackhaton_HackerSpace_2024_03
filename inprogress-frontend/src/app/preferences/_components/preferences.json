@@ -1,0 +1,19 @@
+{
+  "lookingFor": "mentors",
+  "minAge": 18,
+  "maxAge": 25,
+  "skills": [
+    {
+      "skill": "Programming",
+      "range": [0, 24]
+    },
+    {
+      "skill": "Graphics",
+      "range": [2, 12]
+    },
+    {
+      "skill": "Project management",
+      "range": [1, 3]
+    }
+  ]
+}
