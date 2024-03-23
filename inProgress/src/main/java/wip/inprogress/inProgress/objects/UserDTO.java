@@ -1,6 +1,6 @@
 package wip.inprogress.inProgress.objects;
 
-import wip.inprogress.inProgress.models.Experience;
+import wip.inprogress.inProgress.models.Skill;
 import wip.inprogress.inProgress.models.UserEntity;
 
 import java.util.List;

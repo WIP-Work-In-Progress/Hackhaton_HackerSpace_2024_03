@@ -24,13 +24,13 @@ public class UserController {
 
     @PostMapping("/match")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void match(Principal principal, @RequestParam MatchRequest matchRequest) {
+    public void match(Principal principal, @RequestBody MatchRequest matchRequest) {
         userService.match(principal.getName(), matchRequest.getMentorUsername());
     }
 
     @PostMapping("/notMatch")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    public void notMatch(Principal principal, @RequestParam MatchRequest matchRequest) {
+    public void notMatch(Principal principal, @RequestBody MatchRequest matchRequest) {
         userService.notMatch(principal.getName(), matchRequest.getMentorUsername());
     }
 

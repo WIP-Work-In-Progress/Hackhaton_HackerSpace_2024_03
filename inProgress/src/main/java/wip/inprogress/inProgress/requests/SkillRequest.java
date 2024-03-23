@@ -3,6 +3,6 @@ package wip.inprogress.inProgress.requests;
 import lombok.Getter;
 
 @Getter
-public class ExperienceRequest {
+public class SkillRequest {
     private String name;
 }
