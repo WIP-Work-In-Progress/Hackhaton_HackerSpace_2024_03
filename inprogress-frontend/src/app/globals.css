@@ -49,3 +49,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.swiper-person-card-overlay {
+  background-image: linear-gradient(transparent, #00000099, black);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+}
