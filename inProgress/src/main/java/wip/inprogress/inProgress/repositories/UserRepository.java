@@ -20,6 +20,7 @@ public interface UserRepository extends Neo4jRepository<UserEntity, String> {
 
     @Query("MATCH (u:User {username: $username}) " +
            "SET u.age = $age " +
+            "WITH u " +
            "UNWIND $experiences as experienceName " +
            "MATCH (e:Experience {name: experienceName}) " +
            "MERGE (u)-[:HAS]->(e)")

@@ -31,7 +31,7 @@ public class UserController {
 
     @PostMapping("/preferences/set")
     public ResponseEntity<Void> setPreferences(Principal principal){
-        userService.setPreferences(principal.getName(), 25, List.of("Java", "Spring"));
+        userService.setPreferences(principal.getName(), 25, List.of("Programming"));
         return ResponseEntity.ok().build();
     }
 
