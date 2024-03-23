@@ -9,6 +9,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface UserRepository extends Neo4jRepository<UserEntity, String> {
+    @Query("MATCH (u:User {username: $username})" +
+            "OPTIONAL MATCH (u)-[r:IS_MENTEE]->(n:Mentee)" +
+            " RETURN u, r, n")
     Optional<UserEntity> findByUsername(String username);
     boolean existsByUsername(String username);
 

@@ -17,7 +17,7 @@ public interface MentorRepository extends Neo4jRepository<Mentor, UUID> {
             "MERGE (u)-[:HAS {year: experience.years_of_experience}]->(e)")
     void setPreferences(UUID id, Integer age, List<SkillWithExperience> experiences);
 
-    @Query("MATCH (u:Mentor)-[:HAS]->(e:Experience) WHERE u.age >= $minAge AND u.age <= $maxAge AND e.name IN $experiences RETURN u")
+    @Query("MATCH (u:Mentor)-[r:HAS]->(e:Experience) WHERE u.age >= $minAge AND u.age <= $maxAge AND e.name IN $experiences RETURN u, r, e")
     List<Mentor> findAllByAgeBetweenAndExperiences(Integer minAge, Integer maxAge, List<String> skills);
 
     @Query("MATCH (u:Mentor)-[:HAS]->(e:SKill) WHERE e.name IN $experiences RETURN u")

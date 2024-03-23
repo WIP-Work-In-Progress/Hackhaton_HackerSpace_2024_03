@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import wip.inprogress.inProgress.models.Mentee;
 import wip.inprogress.inProgress.models.Mentor;
+import wip.inprogress.inProgress.models.Skill;
 import wip.inprogress.inProgress.models.UserEntity;
 import wip.inprogress.inProgress.objects.MentorDTO;
 import wip.inprogress.inProgress.responses.MentorResponse;
@@ -52,8 +53,8 @@ public class MentorController {
     @GetMapping("/preferences")
     List<MentorDTO> get(Principal principal) {
         Mentee user = userService.getUserByUsername(principal.getName()).getMentee();
-        //TODO Filter by skills mandatory and sort by age
-        List<Mentor> mentors = mentorService.getMentorsByAge(user.getMinAge(), user.getMaxAge());
+        List<Mentor> mentors = mentorService.getMentorsByAgeAndExperience(user.getMinAge(), user.getMaxAge(),
+                user.getSkills().stream().map(Skill::getName).toList());
 
         return mentors.stream().map(mentor -> {
             UserEntity mentorUser = userService.getUserEntityFromMentorId(mentor.getId());
