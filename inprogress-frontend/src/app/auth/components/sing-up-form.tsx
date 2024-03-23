@@ -105,7 +105,9 @@ export default function SignUpForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Sign Up</Button>
+        <div className="flex justify-end mr-2">
+          <Button type="submit">Zarejestruj się</Button>
+        </div>
       </form>
     </Form>
   );
