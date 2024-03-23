@@ -16,11 +16,8 @@ public class MentorService {
     }
 
     public List<Mentor> getMentorsByAgeAndExperience(int minAge, int maxAge, List<String> skillNames) {
+        //TODO Change skillNames to Skill with experience
         return mentorRepository.findAllByAgeBetweenAndExperiences(minAge, maxAge, skillNames);
-    }
-
-    public List<Mentor> getMentorsByExperience(List<String> skillNames){
-        return mentorRepository.findAllByExperiences(skillNames);
     }
 
     public List<Mentor> getMentorsByAge(int minAge, int maxAge) {
