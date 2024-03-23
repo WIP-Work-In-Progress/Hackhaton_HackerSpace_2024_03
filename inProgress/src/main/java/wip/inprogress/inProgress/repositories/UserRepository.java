@@ -30,4 +30,12 @@ public interface UserRepository extends Neo4jRepository<UserEntity, String> {
 
     @Query("MATCH (u:USER)-[:MENTOR]->(m:MENTOR {id: $mentorId}) RETURN u")
     UserEntity getUserEntityFromMentorId(UUID mentorId);
+
+    @Query("MATCH (u:User {username: $username}) " +
+           "MERGE (u)-[:IS_MENTOR]->(m:Mentor)")
+    void becomeMentor(String username);
+
+    @Query("MATCH (u:User {username: $username}) " +
+           "MERGE (u)-[:IS_MENTEE]->(m:Mentee)")
+    void becomeMentee(String username);
 }

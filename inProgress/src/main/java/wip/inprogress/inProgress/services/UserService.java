@@ -35,6 +35,14 @@ public class UserService {
         userRepository.notMatch(username, mentorUsername);
     }
 
+    public void becomeMentor(String username) {
+        userRepository.becomeMentor(username);
+    }
+
+    public void becomeMentee(String username) {
+        userRepository.becomeMentee(username);
+    }
+
     public UserEntity getUserEntityFromMentorId(UUID mentorId) {
         return userRepository.getUserEntityFromMentorId(mentorId);
     }
