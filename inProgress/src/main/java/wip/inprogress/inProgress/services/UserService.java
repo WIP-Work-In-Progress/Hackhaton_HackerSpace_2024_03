@@ -27,7 +27,4 @@ public class UserService {
         return userRepository.findAllByNotMatches();
     }
 
-    public void setPreferences(String username, Integer minAge, Integer maxAge, List<String> experiences) {
-        userRepository.setPreferences(username, minAge, maxAge, experiences);
-    }
 }

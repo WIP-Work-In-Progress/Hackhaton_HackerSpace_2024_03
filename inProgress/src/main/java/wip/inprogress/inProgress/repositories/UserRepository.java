@@ -18,13 +18,7 @@ public interface UserRepository extends Neo4jRepository<UserEntity, String> {
     @Query("MATCH (u:User)-[:NOT_MATCH]->(n:User) RETURN u")
     List<UserEntity> findAllByNotMatches();
 
-    @Query("MATCH (u:User {username: $username}) " +
-           "SET u.minAge = $minAge, u.maxAge = $maxAge " +
-            "WITH u " +
-           "UNWIND $experiences as experienceName " +
-           "MATCH (e:Experience {name: experienceName}) " +
-           "MERGE (u)-[:HAS]->(e)")
-    void setPreferences(String username, Integer minAge, Integer maxAge, List<String> experiences);
+
 
     @Query("MATCH (u:User) WHERE u.age >= $minAge AND u.age <= $maxAge RETURN u")
     List<UserEntity> findUserEntitiesByAge(int minAge, int maxAge);
