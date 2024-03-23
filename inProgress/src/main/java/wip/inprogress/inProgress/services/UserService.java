@@ -27,4 +27,15 @@ public class UserService {
         return userRepository.findAllByNotMatches();
     }
 
+    public void match(String username, String mentorUsername) {
+        userRepository.match(username, mentorUsername);
+    }
+
+    public void notMatch(String username, String mentorUsername) {
+        userRepository.notMatch(username, mentorUsername);
+    }
+
+    public void setPreferences(String username, Integer minAge, Integer maxAge, List<String> experiences) {
+        userRepository.setPreferences(username, minAge, maxAge, experiences);
+    }
 }
