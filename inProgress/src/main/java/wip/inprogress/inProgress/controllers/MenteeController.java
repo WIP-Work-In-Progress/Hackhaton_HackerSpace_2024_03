@@ -21,7 +21,7 @@ public class MenteeController {
         if (userPreferencesRequest.getPreferences().isEmpty()) {
             return ResponseEntity.badRequest().body("Preferences cannot be empty");
         }
-        menteeService(principal.getName(), userPreferencesRequest.getMinAge(), userPreferencesRequest.getMaxAge(), userPreferencesRequest.getPreferences());
+//        menteeService(principal.getName(), userPreferencesRequest.getMinAge(), userPreferencesRequest.getMaxAge(), userPreferencesRequest.getPreferences());
         return ResponseEntity.ok().build();
     }
 
