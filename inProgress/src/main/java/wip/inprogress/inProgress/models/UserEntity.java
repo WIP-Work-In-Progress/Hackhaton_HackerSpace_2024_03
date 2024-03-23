@@ -19,10 +19,12 @@ public class UserEntity {
     private String firstName;
     private String lastName;
     private String roles;
-    private Integer minAge;
-    private Integer maxAge;
 
-    @Relationship(type = "HAS", direction = Relationship.Direction.OUTGOING)
+    @Relationship(type = "IS_MENTOR")
+    private Mentor mentor;
+
+    @Relationship(type = "IS_MENTEE")
+    private Mentee mentee;
     private List<Skill> skills;
 
     @Relationship(type = "MATCH")
