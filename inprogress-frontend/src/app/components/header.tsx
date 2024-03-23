@@ -12,7 +12,7 @@ function Header() {
 
   function logOut() {
     setIsLoggedIn(false);
-    router.push("/");
+    router.push("/auth");
   }
 
   return (
