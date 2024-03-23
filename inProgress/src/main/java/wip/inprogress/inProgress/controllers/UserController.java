@@ -1,8 +1,10 @@
 package wip.inprogress.inProgress.controllers;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import wip.inprogress.inProgress.objects.UserDTO;
+import wip.inprogress.inProgress.requests.MatchRequest;
 import wip.inprogress.inProgress.services.UserService;
 import wip.inprogress.inProgress.requests.UserPreferencesRequest;
 
@@ -18,6 +20,18 @@ public class UserController {
 
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+    @PostMapping("/match")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void match(Principal principal, @RequestParam MatchRequest matchRequest) {
+        userService.match(principal.getName(), matchRequest.getMentorUsername());
+    }
+
+    @PostMapping("/notMatch")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void notMatch(Principal principal, @RequestParam MatchRequest matchRequest) {
+        userService.notMatch(principal.getName(), matchRequest.getMentorUsername());
     }
 
     @GetMapping("/matching")

@@ -2,9 +2,9 @@ POST http://localhost:8080/api/v1/auth/register
 Content-Type: application/json
 
 {
-  "firstName": "John",
-  "lastName": "Doe",
-  "username": "johndoe",
+  "firstName": "John2",
+  "lastName": "Doe2",
+  "username": "johndoe2",
   "password": "password"
 }
 
@@ -27,4 +27,14 @@ Content-Type: application/json
   "minAge": 11,
   "maxAge": 40,
   "preferences": ["Programming"]
+}
+
+###
+
+POST http://localhost:8080/api/v1/user/match
+Authorization: Bearer eyJraWQiOiJmY2M2MmM0ZS0zMTU3LTQzODktOTBkNC0xNGI0YzEyNmNmNmIiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiam9obmRvZSIsImV4cCI6MTcxMzg2Nzg0MCwiaWF0IjoxNzExMTg5NDQwLCJzY29wZSI6IlJPTEVfVVNFUiJ9.tC8CgBDYCtIlaXdDxWdyZvEsXwp6kXppzEouHXv3sA9Gl4fYx-WGjnOQaUGsBU51kaYpf2Gvs4spiTk41Np07C0CpNZEZDbwvPMM04e0BL-EawwTer_KXtu7VIhDBBA-vx3xfSQbrwwxhjUINj0dO41YZgTrjzJW5nwbmmPufKShfnEsCk-oG-8G546rbm-ogv1mfTmaSf6wRTRS8td-I8AVC14F3txfXxWHAoQJajmRzCVkrxwGFzm16GyZgXEjB0Rpp5ZFg79zfedywimkmkscJ7Sn544qgsVJ37jnS6inOxOsJ_fvPWqcWbpfKJIlNcMIVobbbE2_XNM2lCXI
+Content-Type: application/json
+
+{
+  "mentorUsername": "johndoe2"
 }
