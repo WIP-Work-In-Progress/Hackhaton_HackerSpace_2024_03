@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import FormLayout from "./components/form-layout";
 
 function page() {
-  return (
-    <div>page</div>
-  )
+  return <FormLayout></FormLayout>;
 }
 
-export default page
+export default page;
