@@ -24,4 +24,6 @@ public interface UserRepository extends Neo4jRepository<UserEntity, String> {
            "MATCH (e:Experience {name: experienceName}) " +
            "MERGE (u)-[:HAS]->(e)")
     void setPreferences(String username, Integer age, List<String> experiences);
+    @Query("MATCH (u:User)-[:HAS]->(e:Experience { name: $experienceName }) RETURN u, e")
+    List<UserEntity> findUserEntitiesByExperiencesName(String experienceName);
 }
