@@ -19,7 +19,9 @@ import axios from "axios";
 import { useLoginContext } from "@/app/providers/loginContext";
 import { setCookie } from "cookies-next";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useRouter } from "next/navigation";
 function SignInForm() {
+  const router = useRouter();
   const { isLoggedIn, setIsLoggedIn } = useLoginContext();
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
@@ -43,6 +45,7 @@ function SignInForm() {
         console.log("Logged in");
         setIsLoggedIn(true);
         setCookie("token", response.data);
+        router.push("/swiper");
       }
     } catch (e) {
       alert("Failed to login");
