@@ -1,14 +1,12 @@
 package wip.inprogress.inProgress.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import wip.inprogress.inProgress.models.Mentee;
 import wip.inprogress.inProgress.models.Mentor;
 import wip.inprogress.inProgress.models.Skill;
 import wip.inprogress.inProgress.models.UserEntity;
 import wip.inprogress.inProgress.objects.MentorDTO;
+import wip.inprogress.inProgress.requests.MentorRequest;
 import wip.inprogress.inProgress.responses.MentorResponse;
 import wip.inprogress.inProgress.services.MentorService;
 import wip.inprogress.inProgress.services.UserService;
@@ -63,4 +61,8 @@ public class MentorController {
     }
 
     //TODO set preferences skills and age
+    @PostMapping("/preferences/set")
+    public void setPreferences(Principal principal, @RequestBody MentorRequest mentorRequest) {
+        mentorService.setPreferences(principal.getName(), mentorRequest.age(), mentorRequest.skillNames());
+    }
 }

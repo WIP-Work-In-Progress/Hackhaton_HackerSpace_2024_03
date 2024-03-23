@@ -23,4 +23,9 @@ public class MentorService {
     public List<Mentor> getMentorsByAge(int minAge, int maxAge) {
         return mentorRepository.findALlByAgeBetween(minAge, maxAge);
     }
+
+    public void setPreferences(String name, int age, List<String> skillNames) {
+        Optional<Mentor> mentor = mentorRepository.findByUsername(name);
+        mentor.ifPresent(value -> mentorRepository.setPreferences(value.getId(), age, skillNames));
+    }
 }
