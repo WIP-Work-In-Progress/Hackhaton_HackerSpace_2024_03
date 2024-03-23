@@ -6,6 +6,7 @@ import wip.inprogress.inProgress.models.UserEntity;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface UserRepository extends Neo4jRepository<UserEntity, String> {
     Optional<UserEntity> findByUsername(String username);
@@ -34,4 +35,7 @@ public interface UserRepository extends Neo4jRepository<UserEntity, String> {
            "MATCH (m:User {username: $mentorUsername}) " +
            "MERGE (u)-[:NOT_MATCH]->(m)")
     void notMatch(String username, String mentorUsername);
+
+    @Query("MATCH (u:USER)-[:MENTOR]->(m:MENTOR {id: $mentorId}) RETURN u")
+    UserEntity getUserEntityFromMentorId(UUID mentorId);
 }

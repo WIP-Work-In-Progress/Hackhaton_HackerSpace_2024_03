@@ -5,6 +5,7 @@ import wip.inprogress.inProgress.models.UserEntity;
 import wip.inprogress.inProgress.repositories.UserRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -34,7 +35,11 @@ public class UserService {
         userRepository.notMatch(username, mentorUsername);
     }
 
-    public void setPreferences(String username, Integer minAge, Integer maxAge, List<String> experiences) {
-        userRepository.setPreferences(username, minAge, maxAge, experiences);
+//    public void setPreferences(String username, Integer minAge, Integer maxAge, List<String> experiences) {
+//        userRepository.setPreferences(username, minAge, maxAge, experiences);
+//    }
+
+    public UserEntity getUserEntityFromMentorId(UUID mentorId) {
+        return userRepository.getUserEntityFromMentorId(mentorId);
     }
 }

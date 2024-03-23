@@ -16,5 +16,5 @@ public class Mentor {
     private UUID id;
     private Integer age;
     @Relationship(type = "HAS")
-    private List<Experience> experiences;
+    private List<Skill> skills;
 }
