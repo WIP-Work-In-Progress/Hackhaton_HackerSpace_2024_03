@@ -33,8 +33,12 @@ function SignInForm() {
     try {
       const response = await axios.post(
         "http://localhost:8080/api/v1/auth/login",
-        values
+        {
+          username: values.email,
+          password: values.password,
+        },
       );
+      console.log(response);
       if (response.status === 200) {
         console.log("Logged in");
         setIsLoggedIn(true);

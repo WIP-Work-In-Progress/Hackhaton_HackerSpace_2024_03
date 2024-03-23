@@ -7,6 +7,7 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import MyInput from "./my-input";
+import axios from "axios";
 
 const formSchema = z.object({
   firstName: z.string().min(1, {
@@ -36,6 +37,7 @@ export default function SignUpForm() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    axios.post("http://localhost:8080/api/v1/auth/register", values);
   }
 
   return (
