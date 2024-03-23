@@ -18,16 +18,6 @@ Content-Type: application/json
   "password": "password"
 }
 
-###
-POST http://localhost:8080/api/v1/user/preferences/set
-Authorization: Bearer eyJraWQiOiJmN2I4NjQyMi0wNTgxLTQzNmMtOTRlMC1kN2M0MTNhNWRkYjAiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiam9obmRvZSIsImV4cCI6MTcxMzg2ODU0NSwiaWF0IjoxNzExMTkwMTQ1LCJzY29wZSI6IlJPTEVfVVNFUiJ9.EN_XOEqKzaazhtwrdJrbLzG7UTn651ecsbSaGZJJkL6356SB3Y5-SSxAFwxD_HZQ6DafomY8GBfYAoxWECEC-2I6BLGm3lB7gjrZtniScobV7fJOxw8_kQtKiMga5yVCwjOj_MSfIh_HddseJWgyXaP-yM9nsvakLKL6tS-3ZRgK6HCC9AMCv1c_BuZ7lmTZU2XT5SPMGMgStSa9DW7nCxdf7PEcRXDhGZXyJ3kWB5482fZOZnYuU8yIylHXnu8AbzzOXR5okyLuNX6xE0tCR_SYV4k1kSkL-sr8dBqlW5aaQJ8SCwcugWlGDS6EbeDBmdiTgs9j4SeaSb4RqL3tPw
-Content-Type: application/json
-
-{
-  "minAge": 11,
-  "maxAge": 40,
-  "preferences": ["Programming"]
-}
 
 ###
 

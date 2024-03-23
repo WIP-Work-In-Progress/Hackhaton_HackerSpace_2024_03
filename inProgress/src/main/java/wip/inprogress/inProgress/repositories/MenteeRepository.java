@@ -10,9 +10,8 @@ public interface MenteeRepository extends Neo4jRepository<MenteeRepository, UUID
     @Query("MATCH (u:Mentee {id: $id}) " +
             "SET u.minAge = $minAge, u.maxAge = $maxAge " +
             "WITH u " +
-            "UNWIND $experiences as experienceName " +
-            "MATCH (e:Experience {name: experienceName}) " +
+            "UNWIND $skills as skillName " +
+            "MATCH (e:Skill {name: skillName}) " +
             "MERGE (u)-[:LOOKS_FOR]->(e)")
-    void setPreferences(UUID id, Integer minAge, Integer maxAge, List<String> experiences);
-    // TODO: Fix query
+    void setPreferences(UUID id, Integer minAge, Integer maxAge, List<String> skills);
 }
