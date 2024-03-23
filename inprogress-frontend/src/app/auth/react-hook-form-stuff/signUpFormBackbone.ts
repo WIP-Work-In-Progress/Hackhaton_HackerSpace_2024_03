@@ -16,6 +16,13 @@ const signUpSchema = z
     password: passwordSchemaField,
     passwordConfirmation: passwordSchemaField,
     username: usernameSchemaField,
+    termsCheck: z
+      .boolean()
+      .default(false)
+      .refine((value) => value === true, {
+        message: EMessages.TERMS_NOT_CHECKED,
+        path: ["termsCheck"],
+      }),
   })
   .refine((data) => data.password === data.passwordConfirmation, {
     message: EMessages.PASSWORDS_NOT_MATCH,

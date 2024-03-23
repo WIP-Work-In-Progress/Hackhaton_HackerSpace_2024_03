@@ -13,7 +13,11 @@ function MyInput(props: IInputProps) {
     <FormItem>
       <FormLabel>{props.label}</FormLabel>
       <FormControl>
-        <Input placeholder={props.placeholder} {...props.field} />
+        <Input
+          type={props.type ? props.type : "text"}
+          placeholder={props.placeholder}
+          {...props.field}
+        />
       </FormControl>
       <FormMessage />
     </FormItem>

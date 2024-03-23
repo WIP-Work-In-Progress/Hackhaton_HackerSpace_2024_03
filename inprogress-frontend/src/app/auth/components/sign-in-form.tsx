@@ -17,7 +17,8 @@ import MyInput from "./my-input";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useLoginContext } from "@/app/providers/loginContext";
-
+import { setCookie } from "cookies-next";
+import { Checkbox } from "@/components/ui/checkbox";
 function SignInForm() {
   const { isLoggedIn, setIsLoggedIn } = useLoginContext();
   const form = useForm<z.infer<typeof signInSchema>>({
@@ -37,6 +38,7 @@ function SignInForm() {
       if (response.status === 200) {
         console.log("Logged in");
         setIsLoggedIn(true);
+        setCookie("token", response.data);
       }
     } catch (e) {
       alert("Failed to login");
@@ -53,6 +55,7 @@ function SignInForm() {
               label="Username"
               placeholder="Enter your username"
               field={field}
+              type="email"
             />
           )}
         />
@@ -63,11 +66,12 @@ function SignInForm() {
             <MyInput
               label="Password"
               placeholder="Enter your password"
+              type="password"
               field={field}
             />
           )}
         />
-        // TODO: ADD CHECKBOX
+
         <Button type="submit" className="self-end">
           Sign In
         </Button>

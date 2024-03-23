@@ -10,11 +10,7 @@ function Header() {
     <header className="flex justify-between p-2 bg-primary">
       <div className="icon">InProgress</div>
       <div className="loginButtons">
-        {isLoggedIn ? (
-          <Button>Logout</Button>
-        ) : (
-          <Button >Login</Button>
-        )}
+        {isLoggedIn ? <Button>Logout</Button> : null}
       </div>
     </header>
   );

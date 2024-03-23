@@ -17,5 +17,6 @@ enum EMessages {
   LAST_NAME_TOO_LONG = "Last name is too long",
   LAST_NAME_INVALID = "Last name is invalid",
   LAST_NAME_REQUIRED = "Last name is required",
+  TERMS_NOT_CHECKED = "Terms and conditions must be accepted",
 }
 export default EMessages;
