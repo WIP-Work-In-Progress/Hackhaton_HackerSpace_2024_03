@@ -35,10 +35,6 @@ public class UserService {
         userRepository.notMatch(username, mentorUsername);
     }
 
-//    public void setPreferences(String username, Integer minAge, Integer maxAge, List<String> experiences) {
-//        userRepository.setPreferences(username, minAge, maxAge, experiences);
-//    }
-
     public UserEntity getUserEntityFromMentorId(UUID mentorId) {
         return userRepository.getUserEntityFromMentorId(mentorId);
     }

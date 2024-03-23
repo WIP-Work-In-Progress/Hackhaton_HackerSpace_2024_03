@@ -14,4 +14,5 @@ public interface MenteeRepository extends Neo4jRepository<MenteeRepository, UUID
             "MATCH (e:Experience {name: experienceName}) " +
             "MERGE (u)-[:LOOKS_FOR]->(e)")
     void setPreferences(UUID id, Integer minAge, Integer maxAge, List<String> experiences);
+    // TODO: Fix query
 }

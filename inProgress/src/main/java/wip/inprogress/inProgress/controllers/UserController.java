@@ -47,17 +47,5 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllNotMatches().stream().map(UserDTO::from).collect(Collectors.toList()));
     }
 
-//    @PostMapping("/preferences/set")
-//    public ResponseEntity<String> setPreferences(Principal principal, @RequestBody UserPreferencesRequest userPreferencesRequest){
-//        if (userPreferencesRequest.getMinAge() < 0 || userPreferencesRequest.getMaxAge() < 0) {
-//            return ResponseEntity.badRequest().body("Age cannot be negative");
-//        }
-//        if (userPreferencesRequest.getPreferences().isEmpty()) {
-//            return ResponseEntity.badRequest().body("Preferences cannot be empty");
-//        }
-//        menteeService.s(principal.getName(), userPreferencesRequest.getMinAge(), userPreferencesRequest.getMaxAge(), userPreferencesRequest.getPreferences());
-//        return ResponseEntity.ok().build();
-//    }
-
 
 }

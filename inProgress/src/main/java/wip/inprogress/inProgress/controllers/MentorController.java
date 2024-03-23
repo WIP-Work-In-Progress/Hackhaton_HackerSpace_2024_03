@@ -52,6 +52,7 @@ public class MentorController {
     @GetMapping("/preferences")
     List<MentorDTO> get(Principal principal) {
         Mentee user = userService.getUserByUsername(principal.getName()).getMentee();
+        //TODO Filter by skills mandatory and sort by age
         List<Mentor> mentors = mentorService.getMentorsByAge(user.getMinAge(), user.getMaxAge());
 
         return mentors.stream().map(mentor -> {
@@ -59,4 +60,6 @@ public class MentorController {
             return new MentorDTO(mentorUser.getFirstName(), mentorUser.getLastName(), mentor.getAge(), mentor.getSkills());
         }).toList();
     }
+
+    //TODO set preferences skills and age
 }
