@@ -53,7 +53,7 @@ function SignInForm() {
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
           name="email"
@@ -78,10 +78,11 @@ function SignInForm() {
             />
           )}
         />
-
-        <Button type="submit" className="self-end">
-          Zaloguj
-        </Button>
+        <div className="flex justify-end mr-2">
+          <Button type="submit" className="self-end">
+            Zaloguj
+          </Button>
+        </div>
       </form>
     </Form>
   );

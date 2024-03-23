@@ -76,9 +76,9 @@ export default function PreferencesForm() {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
+          {/* <FormField
           control={form.control}
           name="lookingFor"
           render={({ field }) => (
@@ -106,27 +106,27 @@ export default function PreferencesForm() {
               <FormMessage />
             </FormItem>
           )}
-        />
-        {form.watch("skills").map((skill, index) => (
-          <div key={index}>
-            <FormItem>
-              <FormLabel>{skill.skill}</FormLabel>
-              <SliderTwo
-                defaultValue={skill.yearsRange}
-                max={80}
-                min={18}
-                step={1}
-                index={index}
-                onValueChange={(value) => handleRangeChange(value, index)}
-                formatLabel={(value) => `${value} lat`}
-              />
-            </FormItem>
+        /> */}
+          {form.watch("skills").map((skill, index) => (
+            <div key={index}>
+              <FormItem>
+                <FormLabel>{skill.skill}</FormLabel>
+                <SliderTwo
+                  defaultValue={skill.yearsRange}
+                  max={80}
+                  min={18}
+                  step={1}
+                  index={index}
+                  onValueChange={(value) => handleRangeChange(value, index)}
+                  formatLabel={(value) => `${value} lat`}
+                />
+              </FormItem>
+            </div>
+          ))}
+          <div className="flex justify-end py-10">
+            <Button type="submit">Submit</Button>
           </div>
-        ))}
-        <div className="flex justify-end py-10">
-          <Button type="submit">Submit</Button>
-        </div>
-      </form>
-    </Form>
+        </form>
+      </Form>
   );
 }
