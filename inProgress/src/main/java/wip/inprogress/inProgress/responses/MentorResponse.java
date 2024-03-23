@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import wip.inprogress.inProgress.models.Experience;
+import wip.inprogress.inProgress.models.Skill;
 
 import java.util.List;
 
@@ -14,5 +14,5 @@ import java.util.List;
 @NoArgsConstructor
 public class MentorResponse {
     private String username;
-    private List<Experience> experiences;
+    private List<Skill> skills;
 }

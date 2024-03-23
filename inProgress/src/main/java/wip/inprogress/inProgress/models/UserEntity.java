@@ -1,7 +1,6 @@
 package wip.inprogress.inProgress.models;
 
 import lombok.*;
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
@@ -24,7 +23,7 @@ public class UserEntity {
     private Integer maxAge;
 
     @Relationship(type = "HAS", direction = Relationship.Direction.OUTGOING)
-    private List<Experience> experiences;
+    private List<Skill> skills;
 
     @Relationship(type = "MATCH")
     private List<UserEntity> matches;

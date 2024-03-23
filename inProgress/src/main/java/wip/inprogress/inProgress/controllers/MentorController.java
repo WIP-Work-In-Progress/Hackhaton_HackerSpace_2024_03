@@ -32,7 +32,7 @@ public class MentorController {
         if (Objects.equals(experience, "")) {
             return mentorService.getMentorsByAge(minAge, maxAge).stream().map(mentor -> MentorResponse.builder()
                     .username(mentor.getUsername())
-                    .experiences(mentor.getExperiences())
+                    .skills(mentor.getSkills())
                     .build()).toList();
         }
 
@@ -54,7 +54,7 @@ public class MentorController {
     private List<MentorResponse> MapToMentorResponse(List<UserEntity> mentors) {
         return mentors.stream().map(mentor -> MentorResponse.builder()
                 .username(mentor.getUsername())
-                .experiences(mentor.getExperiences())
+                .skills(mentor.getSkills())
                 .build()).toList();
     }
 }

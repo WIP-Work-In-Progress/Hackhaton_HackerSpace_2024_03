@@ -1,7 +1,6 @@
 package wip.inprogress.inProgress.services;
 
 import org.springframework.stereotype.Service;
-import wip.inprogress.inProgress.models.Experience;
 import wip.inprogress.inProgress.models.UserEntity;
 import wip.inprogress.inProgress.repositories.UserRepository;
 
