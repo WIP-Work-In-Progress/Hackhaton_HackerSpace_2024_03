@@ -4,10 +4,10 @@ import PreferencesForm from "../whoami/_components/preferences-form";
 
 function page() {
   return (
-    <div className="px-10">
-      <h2>Preferencje</h2>
-      <Separator />
-      <div className="py-5 bg-secondary">
+    <div className="bg-secondary py-6 space-y-4">
+      <h2 className="text-xl px-10">Preferencje</h2>
+      <Separator className="bg-black w-full" />
+      <div className="px-10">
         <PreferencesForm />
       </div>
     </div>

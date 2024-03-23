@@ -3,6 +3,14 @@ import { createRef, useEffect, useMemo, useRef, useState } from "react";
 import TinderCard from "react-tinder-card";
 import PersonDetailsComponent from "./person-details-component";
 import PersonInfoComponent from "./person-info-component";
+import { Button } from "@/components/ui/button";
+import {
+  MoveDiagonal,
+  MoveDown,
+  MoveLeft,
+  MoveRight,
+  MoveUp,
+} from "lucide-react";
 
 // TODO - fetch data from db
 const db = [
@@ -83,6 +91,11 @@ export default function SwiperComponent() {
     []
   );
 
+  const swipe = async (dir) => {
+    if (currentIndex < db.length) {
+      await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
+    }
+  };
   const updateCurrentIndex = (val) => {
     setCurrentIndex(val);
     currentIndexRef.current = val;
@@ -109,6 +122,7 @@ export default function SwiperComponent() {
 
       case "right": {
         updateCurrentIndex(currentIndex - 1);
+        break;
       }
 
       case "top": {
@@ -129,7 +143,7 @@ export default function SwiperComponent() {
   };
 
   return (
-    <div className="flex justify-center items-center mt-4 overflow-hidden">
+    <div className="flex  justify-center items-center mt-4 overflow-hidden">
       <ul className="w-80 h-[30rem]">
         {characters.map((person, index) => (
           <li key={index}>
@@ -157,6 +171,38 @@ export default function SwiperComponent() {
           </li>
         ))}
       </ul>
+      <div className="flex buttons absolute bottom-0 w-full justify-center gap-4 pb-8">
+        <div>
+          <Button
+            onClick={() => {
+              swipe("left");
+            }}
+            className="p-6"
+          >
+            <MoveLeft />
+          </Button>
+        </div>
+        <div>
+          <Button
+            onClick={() => {
+              swipe("down");
+            }}
+            className="p-6"
+          >
+            <MoveDown />
+          </Button>
+        </div>
+        <div>
+          <Button
+            onClick={() => {
+              swipe("right");
+            }}
+            className="p-6"
+          >
+            <MoveRight />
+          </Button>
+        </div>
+      </div>
       {personDetailsId && (
         <PersonDetailsComponent
           person={currentPerson}

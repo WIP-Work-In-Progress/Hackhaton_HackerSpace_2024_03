@@ -53,8 +53,8 @@ const SliderTwo = React.forwardRef<HTMLDivElement, SliderProps>(
         )}
         {...props}
       >
-        <SliderPrimitive.Track className="relative h-1.5 w-full grow overflow-hidden rounded-full bg-primary/20">
-          <SliderPrimitive.Range className="absolute h-full bg-primary" />
+        <SliderPrimitive.Track className="relative h-1.5 w-full grow overflow-hidden rounded-full bg-neutral-700">
+          <SliderPrimitive.Range className="absolute  h-full bg-primary" />
         </SliderPrimitive.Track>
         {localValues.map((value, index) => (
           <React.Fragment key={index}>
