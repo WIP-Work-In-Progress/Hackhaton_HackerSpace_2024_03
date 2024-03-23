@@ -15,7 +15,7 @@ public class Mentee {
     private int min_age;
     private int max_age;
     @Relationship(type = "LOOKS_FOR")
-    private List<Experience> experiences;
+    private List<Skill> skills;
 
 
 }
