@@ -7,7 +7,9 @@ function page() {
     <div className="px-10">
       <h2>Preferencje</h2>
       <Separator />
-      <PreferencesForm />
+      <div className="py-5 bg-secondary">
+        <PreferencesForm />
+      </div>
     </div>
   );
 }

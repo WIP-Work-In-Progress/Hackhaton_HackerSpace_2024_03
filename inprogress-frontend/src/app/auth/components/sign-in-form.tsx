@@ -19,7 +19,9 @@ import axios from "axios";
 import { useLoginContext } from "@/app/providers/loginContext";
 import { setCookie } from "cookies-next";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useRouter } from "next/navigation";
 function SignInForm() {
+  const router = useRouter();
   const { isLoggedIn, setIsLoggedIn } = useLoginContext();
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
@@ -33,12 +35,17 @@ function SignInForm() {
     try {
       const response = await axios.post(
         "http://localhost:8080/api/v1/auth/login",
-        values
+        {
+          username: values.email,
+          password: values.password,
+        },
       );
+      console.log(response);
       if (response.status === 200) {
         console.log("Logged in");
         setIsLoggedIn(true);
         setCookie("token", response.data);
+        router.push("/swiper");
       }
     } catch (e) {
       alert("Failed to login");
@@ -46,7 +53,7 @@ function SignInForm() {
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
           name="email"
@@ -71,10 +78,11 @@ function SignInForm() {
             />
           )}
         />
-
-        <Button type="submit" className="self-end">
-          Zaloguj
-        </Button>
+        <div className="flex justify-end mr-2">
+          <Button type="submit" className="self-end">
+            Zaloguj
+          </Button>
+        </div>
       </form>
     </Form>
   );
