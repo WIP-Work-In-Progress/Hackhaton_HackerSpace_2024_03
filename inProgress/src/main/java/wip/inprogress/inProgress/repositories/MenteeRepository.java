@@ -2,11 +2,12 @@ package wip.inprogress.inProgress.repositories;
 
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
+import wip.inprogress.inProgress.models.Mentee;
 
 import java.util.List;
 import java.util.UUID;
 
-public interface MenteeRepository extends Neo4jRepository<MenteeRepository, UUID> {
+public interface MenteeRepository extends Neo4jRepository<Mentee, UUID> {
     @Query("MATCH (u:Mentee {id: $id}) " +
             "SET u.minAge = $minAge, u.maxAge = $maxAge " +
             "WITH u " +

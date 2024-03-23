@@ -27,6 +27,6 @@ public interface MentorRepository extends Neo4jRepository<Mentor, UUID> {
 
     List<Mentor> findALlByAgeBetween(Integer minAge, Integer maxAge);
 
-    @Query("MATCH (u:UserEntity {username: $name})-[:IS]->(m:Mentor) RETURN m")
+    @Query("MATCH (u:UserEntity {username: $name})-[:IS_MENTOR]->(m:Mentor) RETURN m")
     Optional<Mentor> findByUsername(String name);
 }
