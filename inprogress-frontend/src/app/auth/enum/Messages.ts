@@ -1,0 +1,21 @@
+enum EMessages {
+  PASSWORD_TOO_SHORT = "Password is too short",
+  PASSWORD_TOO_LONG = "Password is too long",
+  PASSWORD_INVALID = "Password is invalid",
+  PASSWORD_REQUIRED = "Password is required",
+  PASSWORDS_NOT_MATCH = "Passwords do not match",
+  EMAIL_TOO_SHORT = "Email is too short",
+  EMAIL_TOO_LONG = "Email is too long",
+  EMAIL_INVALID = "Email is invalid",
+  EMAIL_REQUIRED = "Email is required",
+  EMAIL_ALREADY_EXISTS = "Account already exists",
+  FIRST_NAME_TOO_SHORT = "First name is too short",
+  FIRST_NAME_TOO_LONG = "First name is too long",
+  FIRST_NAME_INVALID = "First name is invalid",
+  FIRST_NAME_REQUIRED = "First name is required",
+  LAST_NAME_TOO_SHORT = "Last name is too short",
+  LAST_NAME_TOO_LONG = "Last name is too long",
+  LAST_NAME_INVALID = "Last name is invalid",
+  LAST_NAME_REQUIRED = "Last name is required",
+}
+export default EMessages;
