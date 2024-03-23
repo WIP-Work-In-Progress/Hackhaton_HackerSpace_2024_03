@@ -47,5 +47,17 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllNotMatches().stream().map(UserDTO::from).collect(Collectors.toList()));
     }
 
+    @PutMapping("/becomeMentor")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void becomeMentor(Principal principal) {
+        userService.becomeMentor(principal.getName());
+    }
+
+    @PutMapping("/becomeMentee")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void becomeMentee(Principal principal) {
+        userService.becomeMentee(principal.getName());
+    }
+
 
 }
