@@ -20,9 +20,16 @@ public class UserEntity {
     private String firstName;
     private String lastName;
     private String roles;
+    private Integer age;
 
     @Relationship(type = "HAS", direction = Relationship.Direction.OUTGOING)
     private List<Experience> experiences;
+
+    @Relationship(type = "MATCH")
+    private List<UserEntity> matches;
+
+    @Relationship(type = "NOT_MATCH")
+    private List<UserEntity> notMatches;
 
     public boolean isAdmin() {
         return roles.contains("ADMIN");
