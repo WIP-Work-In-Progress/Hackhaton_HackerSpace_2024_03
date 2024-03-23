@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import wip.inprogress.inProgress.objects.UserDTO;
 import wip.inprogress.inProgress.services.UserService;
+import wip.inprogress.inProgress.requests.UserPreferencesRequest;
 
 import java.security.Principal;
 import java.util.List;
@@ -30,8 +31,14 @@ public class UserController {
     }
 
     @PostMapping("/preferences/set")
-    public ResponseEntity<Void> setPreferences(Principal principal){
-        userService.setPreferences(principal.getName(), 25, List.of("Programming"));
+    public ResponseEntity<String> setPreferences(Principal principal, @RequestBody UserPreferencesRequest userPreferencesRequest){
+        if (userPreferencesRequest.getAge() < 0) {
+            return ResponseEntity.badRequest().body("Age cannot be negative");
+        }
+        if (userPreferencesRequest.getPreferences().isEmpty()) {
+            return ResponseEntity.badRequest().body("Preferences cannot be empty");
+        }
+        userService.setPreferences(principal.getName(), userPreferencesRequest.getAge(), userPreferencesRequest.getPreferences());
         return ResponseEntity.ok().build();
     }
 
