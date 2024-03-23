@@ -4,7 +4,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import wip.inprogress.inProgress.models.Mentor;
 import wip.inprogress.inProgress.models.UserEntity;
+import wip.inprogress.inProgress.objects.MentorDTO;
 import wip.inprogress.inProgress.responses.MentorResponse;
 import wip.inprogress.inProgress.services.MentorService;
 import wip.inprogress.inProgress.services.UserService;
@@ -25,36 +27,36 @@ public class MentorController {
         this.userService = userService;
     }
 
-    @GetMapping("")
-    List<MentorResponse> get(@RequestParam(defaultValue = "0") int minAge, @RequestParam(defaultValue = "0") int maxAge,
-                             @RequestParam(defaultValue = "") String experience) {
-
-        if (Objects.equals(experience, "")) {
-            return mentorService.getMentorsByAge(minAge, maxAge).stream().map(mentor -> MentorResponse.builder()
-                    .username(mentor.getUsername())
-                    .experiences(mentor.getExperiences())
-                    .build()).toList();
-        }
-
-        List<String> experienceNames = Arrays.asList(experience.split(","));
-
-        List<UserEntity> mentors = mentorService.getMentorsByAgeAndExperience(minAge, maxAge, experienceNames);
-
-        return MapToMentorResponse(mentors);
-    }
-
-    @GetMapping("/preferences")
-    List<MentorResponse> get(Principal principal) {
-        UserEntity user = userService.getUserByUsername(principal.getName());
-        List<UserEntity> mentors = mentorService.getMentorsByAge(user.getMinAge(), user.getMaxAge());
-
-        return MapToMentorResponse(mentors);
-    }
-
-    private List<MentorResponse> MapToMentorResponse(List<UserEntity> mentors) {
-        return mentors.stream().map(mentor -> MentorResponse.builder()
-                .username(mentor.getUsername())
-                .experiences(mentor.getExperiences())
-                .build()).toList();
-    }
+//    @GetMapping("")
+//    List<MentorDTO> get(@RequestParam(defaultValue = "0") int minAge, @RequestParam(defaultValue = "0") int maxAge,
+//                        @RequestParam(defaultValue = "") String experience) {
+//
+//        if (Objects.equals(experience, "")) {
+//            return mentorService.getMentorsByAge(minAge, maxAge).stream().map(mentor -> MentorResponse.builder()
+//                    .username(mentor.getUsername())
+//                    .experiences(mentor.getExperiences())
+//                    .build()).toList();
+//        }
+//
+//        List<String> experienceNames = Arrays.asList(experience.split(","));
+//
+//        List<Mentor> mentors = mentorService.getMentorsByAgeAndExperience(minAge, maxAge, experienceNames);
+//
+//        return MapToMentorResponse(mentors);
+//    }
+//
+//    @GetMapping("/preferences")
+//    List<MentorResponse> get(Principal principal) {
+//        UserEntity user = userService.getUserByUsername(principal.getName());
+//        List<UserEntity> mentors = mentorService.getMentorsByAge(user.getMinAge(), user.getMaxAge());
+//
+//        return MapToMentorResponse(mentors);
+//    }
+//
+//    private List<MentorResponse> MapToMentorResponse(List<UserEntity> mentors) {
+//        return mentors.stream().map(mentor -> MentorResponse.builder()
+//                .username(mentor.getUsername())
+//                .experiences(mentor.getExperiences())
+//                .build()).toList();
+//    }
 }
