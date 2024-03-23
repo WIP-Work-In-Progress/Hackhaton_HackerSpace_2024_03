@@ -6,11 +6,11 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
   const fav = JSON.parse(sessionStorage.getItem("liked") || "[]");
   return (
-    <div className="grid place-items-center p-4">
+    <div className="grid place-items-center">
       <Link href="/swiper">
         <Button className="">Go to swiper</Button>
       </Link>
-      <div className="grid grid-cols-2 gap-6 p-5">
+      <div className="grid">
         {db
           .filter((person) => fav.includes(person.id))
           .map((person) => (
