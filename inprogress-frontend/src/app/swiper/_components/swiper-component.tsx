@@ -56,6 +56,7 @@ export default function SwiperComponent() {
         sessionStorage.setItem("liked", JSON.stringify([...curr, person.id]));
         setCharacters(filteredCharacters);
         console.log(personDetailsId);
+        break;
       }
 
       case "top": {
