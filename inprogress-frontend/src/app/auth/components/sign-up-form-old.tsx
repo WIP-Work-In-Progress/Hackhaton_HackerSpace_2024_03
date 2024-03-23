@@ -16,14 +16,14 @@ import MyInput from "./my-input";
 import axios from "axios";
 import { useLoginContext } from "@/app/providers/loginContext";
 
-function SignUpForm() {
+function SignUpFormOld() {
   const message = "Sign Up";
   // const { setIsLoggedIn } = useLoginContext();
   // 1. Define your form.
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
-      username: "",
+      gmail: "",
     },
   });
   async function onSubmit(values: z.infer<typeof signUpSchema>) {
@@ -46,7 +46,7 @@ function SignUpForm() {
     <>
       <div className="message">{message}</div>
       <Form {...form}>
-        {/* <FormField
+        <FormField
           control={form.control}
           name="username"
           render={({ field }) => (
@@ -57,7 +57,7 @@ function SignUpForm() {
               type="email"
             />
           )}
-        /> */}
+        />
         {/* <FormField
           control={form.control}
           name="password"
