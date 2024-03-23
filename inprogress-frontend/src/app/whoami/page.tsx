@@ -1,15 +1,14 @@
 import { Separator } from "@/components/ui/separator";
 import React from "react";
-import PreferencesForm from "../whoami/_components/preferences-form";
+import PreferencesForm from "./_components/preferences-form";
+import MentorInfo from "./_components/mentor-info";
 
-function page() {
+export default function page() {
   return (
     <div className="px-10">
       <h2>Preferencje</h2>
       <Separator />
-      <PreferencesForm />
+      <MentorInfo />
     </div>
   );
 }
-
-export default page;

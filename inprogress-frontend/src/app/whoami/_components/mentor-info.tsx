@@ -31,7 +31,7 @@ const formSchema = z.object({
   ),
 });
 
-export default function PreferencesForm() {
+export default function MentorInfo() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,15 +41,15 @@ export default function PreferencesForm() {
       skills: [
         {
           skill: "Programming",
-          yearsRange: [18, 80],
+          yearsRange: [0, 99],
         },
         {
           skill: "Graphics",
-          yearsRange: [18, 80],
+          yearsRange: [0, 99],
         },
         {
           skill: "Project management",
-          yearsRange: [18, 80],
+          yearsRange: [0, 99],
         },
       ],
     },
@@ -77,7 +77,7 @@ export default function PreferencesForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 py-2">
         <FormField
           control={form.control}
           name="lookingFor"
@@ -112,9 +112,9 @@ export default function PreferencesForm() {
             <FormItem>
               <FormLabel>{skill.skill}</FormLabel>
               <Slider
-                defaultValue={skill.yearsRange}
-                max={80}
-                min={18}
+                defaultValue={[0]}
+                min={0}
+                max={99}
                 step={1}
                 index={index}
                 onValueChange={(value) => handleRangeChange(value, index)}
@@ -123,7 +123,9 @@ export default function PreferencesForm() {
             </FormItem>
           </div>
         ))}
-        <Button type="submit">Submit</Button>
+        <div className="flex justify-end py-10">
+          <Button type="submit">Submit</Button>
+        </div>
       </form>
     </Form>
   );
