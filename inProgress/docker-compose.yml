@@ -1,0 +1,23 @@
+version: '3'
+services:
+  spring-boot-app:
+    image: my-spring-boot-app
+    ports:
+      - "8080:8080"
+    networks:
+      - my-network
+
+  neo4j:
+    image: neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - $HOME/neo4j/heart4hack:/data
+    environment:
+      NEO4J_AUTH: neo4j/heart4hack
+    networks:
+      - my-network
+
+networks:
+  my-network:

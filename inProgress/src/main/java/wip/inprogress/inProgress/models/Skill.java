@@ -6,14 +6,14 @@ import org.springframework.data.neo4j.core.schema.Node;
 
 @Getter
 @Node
-public class Experience {
+public class Skill {
     @Id
     private String name;
 
-    private Experience() {
+    private Skill() {
     }
 
-    public Experience(String name) {
+    public Skill(String name) {
         this.name = name;
     }
 }

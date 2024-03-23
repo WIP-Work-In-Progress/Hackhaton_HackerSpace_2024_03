@@ -1,0 +1,30 @@
+POST http://localhost:8080/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "firstName": "John2",
+  "lastName": "Doe2",
+  "username": "johndoe2",
+  "password": "password"
+}
+
+###
+
+POST http://localhost:8080/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "username": "johndoe",
+  "password": "password"
+}
+
+
+###
+
+POST http://localhost:8080/api/v1/user/match
+Authorization: Bearer eyJraWQiOiIwZDdkZjNlYy00YmQ5LTQ4MDEtODM4NS1lODhiYTgwOGY4ZjgiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiam9obmRvZSIsImV4cCI6MTcxMzg2ODgyNCwiaWF0IjoxNzExMTkwNDI0LCJzY29wZSI6IlJPTEVfVVNFUiJ9.XMm1_0WkXux2p5ja13SxM2LvUkjw8gc12KRiz1mlB51PPV9mR5xTmh6cdsVjEQ9zWknLUBuJPxvv6jS633JWHEf_NrAQs-of_6ikUBvK57pkES1Puo3tLs3Hrmd87fx_zz7_PbEGRmb1Nj1NdQ9kbRW5g1WaiR0UGXbyrzTAC98vnp7C68BDqPB21glWgkpgnZBCENcA2uCuPm4M94BcxOfW7HW5CmXXj768UuLZLOiYcqXpPx6sBy07RciOXXhS1TQGHDuAUCbn36k5xc9tTw2hUyHC63SwoolXQpEyePD6Hh9BWLUKGBEucfsUiq4eF7IwjRuYyIgdCQ5WaBqCHg
+Content-Type: application/json
+
+{
+  "mentorUsername": "johndoe2"
+}

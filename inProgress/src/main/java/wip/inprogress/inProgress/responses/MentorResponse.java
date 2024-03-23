@@ -1,17 +1,18 @@
-package wip.inprogress.inProgress.requests;
+package wip.inprogress.inProgress.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import wip.inprogress.inProgress.models.Skill;
+
+import java.util.List;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
-    private String firstName;
-    private String lastName;
+public class MentorResponse {
     private String username;
-    private String password;
+    private List<Skill> skills;
 }
