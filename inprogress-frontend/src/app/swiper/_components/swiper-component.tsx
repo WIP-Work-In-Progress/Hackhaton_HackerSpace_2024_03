@@ -2,6 +2,7 @@
 import { createRef, useEffect, useMemo, useRef, useState } from 'react'
 import TinderCard from 'react-tinder-card'
 import PersonDetailsComponent from './person-details-component'
+import PersonInfoComponent from './person-info-component';
 
 // TODO - fetch data from db
 const db = [
@@ -72,9 +73,9 @@ export default function SwiperComponent() {
   const [currentIndex, setCurrentIndex] = useState(db.length - 1)
   const [characters, setCharacters] = useState(db)
   const [personDetailsId, setPersonDetailsId] = useState<null | string>(null)
+  const [currentPerson, setCurrentPerson] = useState()
   useEffect(() => {
-    console.log(characters[0].interests.splice(3), characters[0].interests)
-    console.log([1,2,3,4].slice(0, 2))
+
   }, [])
   const currentIndexRef = useRef(currentIndex)
   const childRefs = useMemo(
@@ -91,31 +92,43 @@ export default function SwiperComponent() {
   }
 
   const goBack = async () => {   
-    const newIndex = currentIndex - 1
     setPersonDetailsId(null)
+    console.log('test', currentIndex)
     await childRefs[currentIndex].current.restoreCard()
   }
 
-  const swiped = (direction, personCardId) => {
+  const swiped = (direction, person) => {
     // const personCard = document.getElementById(`person-card-${personCardId}`)
-    setCurrentIndex(currentIndex - 1)
     
     switch (direction) {
-      case 'left': 
-        const filteredCharacters = characters.filter(character => character.id !== personCardId)
-        setCharacters(filteredCharacters)
-        console.log(characters)
-        break;
+      case 'left':
+        {
+          updateCurrentIndex(currentIndex - 1)
+          const filteredCharacters = characters.filter(character => character.id !== person.id)
+          setCharacters(filteredCharacters)
+          break;
+        }
+      
+      case 'right':
+        {
+          updateCurrentIndex(currentIndex - 1)
+        }
+
+      case 'top':
+        {
+          updateCurrentIndex(currentIndex - 1)
+          const filteredCharacters = characters.filter(character => character.id !== person.id)
+          setCharacters(filteredCharacters)
+        }
       
       case 'down':
-        setPersonDetailsId(personCardId)
-        break;
+        {
+          setCurrentPerson(person)
+          setPersonDetailsId(person.id)
+          break;
+        }
     }
     console.log(direction)
-  }
-
-  const outOfFrame = (name) => {
-    console.log(name + 'left the screen!')
   }
 
   return (
@@ -123,24 +136,10 @@ export default function SwiperComponent() {
       <ul className='w-80 h-[30rem]'>
         {characters.map((person, index) =>
           <li key={index}>
-            <TinderCard ref={childRefs[index]} onSwipe={(dir) => swiped(dir, person.id)} onCardLeftScreen={() => outOfFrame(person.name, index)}>
-              <div className='swiper-person-card w-80 h-[30rem] bg-white absolute items-end flex rounded-md overflow-hidden'>
+            <TinderCard ref={childRefs[index]} onSwipe={(dir) => swiped(dir, person)}>
+              <div className='swiper-person-card w-80 h-[30rem] bg-white absolute items-end flex rounded-[1rem] overflow-hidden'>
                 <img src={`${person.url}`} alt="profile-image" className='h-[30rem] absolute' />
-                <div className='w-full z-20 p-4'>
-                  <header className='w-full text-xl flex text-white pb-2'>
-                    <h1 className='pr-2'>{person.name},</h1>
-                    <span>{person.age}</span>
-                  </header>
-                  <ul>
-                    {person.interests.slice(0, 3).map((interest, index) => 
-                      <li key={index} className='text-white'>
-                        <label htmlFor="interest" className='pr-2'>{interest.interestName}:</label>
-                        <span>{interest.experienceInYears} lat/a</span>
-                      </li>            
-                    )}
-                  </ul>
-                  {person.interests.length > 3 && <div className='text-white text-xs'>Więcej{`(${person.interests.length - 3})`}...</div>}
-                </div>
+                <PersonInfoComponent person={person} fullInfo={false} fontColor="text-white"></PersonInfoComponent>
                 <div aria-label='hidden' className='swiper-person-card-overlay'></div>
               </div>
             </TinderCard>
@@ -148,7 +147,7 @@ export default function SwiperComponent() {
         )}
       </ul>
       {personDetailsId && 
-        <PersonDetailsComponent personId={personDetailsId} goBack={goBack}></PersonDetailsComponent>
+        <PersonDetailsComponent person={currentPerson} goBack={goBack}></PersonDetailsComponent>
       }
     </div>
   )

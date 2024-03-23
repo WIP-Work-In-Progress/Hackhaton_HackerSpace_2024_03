@@ -24,7 +24,7 @@ function SignInForm() {
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
-      username: "",
+      email: "",
       password: "",
     },
   });
@@ -49,11 +49,11 @@ function SignInForm() {
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           control={form.control}
-          name="username"
+          name="email"
           render={({ field }) => (
             <MyInput
-              label="Username"
-              placeholder="Enter your username"
+              label="Adres email"
+              placeholder="example@test.com"
               field={field}
               type="email"
             />
@@ -64,8 +64,8 @@ function SignInForm() {
           name="password"
           render={({ field }) => (
             <MyInput
-              label="Password"
-              placeholder="Enter your password"
+              label="Hasło"
+              placeholder="Hasło"
               type="password"
               field={field}
             />
@@ -73,7 +73,7 @@ function SignInForm() {
         />
 
         <Button type="submit" className="self-end">
-          Sign In
+          Zaloguj
         </Button>
       </form>
     </Form>
