@@ -6,6 +6,7 @@ import java.util.List;
 
 @Getter
 public class UserPreferencesRequest {
-    private Integer age;
+    private Integer minAge;
+    private Integer maxAge;
     private List<String> preferences;
 }

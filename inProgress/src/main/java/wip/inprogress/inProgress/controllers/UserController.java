@@ -32,13 +32,13 @@ public class UserController {
 
     @PostMapping("/preferences/set")
     public ResponseEntity<String> setPreferences(Principal principal, @RequestBody UserPreferencesRequest userPreferencesRequest){
-        if (userPreferencesRequest.getAge() < 0) {
+        if (userPreferencesRequest.getMinAge() < 0 || userPreferencesRequest.getMaxAge() < 0) {
             return ResponseEntity.badRequest().body("Age cannot be negative");
         }
         if (userPreferencesRequest.getPreferences().isEmpty()) {
             return ResponseEntity.badRequest().body("Preferences cannot be empty");
         }
-        userService.setPreferences(principal.getName(), userPreferencesRequest.getAge(), userPreferencesRequest.getPreferences());
+        userService.setPreferences(principal.getName(), userPreferencesRequest.getMinAge(), userPreferencesRequest.getMaxAge(), userPreferencesRequest.getPreferences());
         return ResponseEntity.ok().build();
     }
 

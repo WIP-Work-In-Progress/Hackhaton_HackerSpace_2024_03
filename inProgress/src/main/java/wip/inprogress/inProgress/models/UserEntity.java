@@ -20,7 +20,8 @@ public class UserEntity {
     private String firstName;
     private String lastName;
     private String roles;
-    private Integer age;
+    private Integer minAge;
+    private Integer maxAge;
 
     @Relationship(type = "HAS", direction = Relationship.Direction.OUTGOING)
     private List<Experience> experiences;

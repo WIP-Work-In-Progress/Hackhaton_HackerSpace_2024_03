@@ -14,7 +14,11 @@ public class MentorService {
         this.userRepository = userRepository;
     }
 
-    public List<UserEntity> getMentorsByExperience(String experienceName) {
-        return userRepository.findUserEntitiesByExperiencesName(experienceName);
+    public List<UserEntity> getMentorsByAgeAndExperience(int minAge, int maxAge, List<String> experienceNames) {
+        return userRepository.findUserEntitiesByAgeAndExperiences(minAge, maxAge, experienceNames);
+    }
+
+    public List<UserEntity> getMentorsByAge(int minAge, int maxAge) {
+        return userRepository.findUserEntitiesByAge(minAge, maxAge);
     }
 }

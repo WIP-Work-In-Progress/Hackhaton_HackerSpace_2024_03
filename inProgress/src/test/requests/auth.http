@@ -10,3 +10,21 @@ Content-Type: application/json
 
 ###
 
+POST http://localhost:8080/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "username": "johndoe",
+  "password": "password"
+}
+
+###
+POST http://localhost:8080/api/v1/user/preferences/set
+Authorization: Bearer eyJraWQiOiI2ZTcxNjgyOC05NDAzLTRkMGYtODU2Ni0wNmRhZDA4MGZmNGYiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiam9obmRvZSIsImV4cCI6MTcxMzg2NjEzMSwiaWF0IjoxNzExMTg3NzMxLCJzY29wZSI6IlJPTEVfVVNFUiJ9.W4ufOEBW7f7SpfgRv6unUeaAEYHSvUUEXJrlXxArCusx7zPQlGY-tjjuAZn5jgI9PX_V3Tex86ZOXBgBGsCw3WKD1RAocfdBGeyeoARfinQdkPIQV-o11NG-BV4xfgGqA0vvFNbc_MOEJdNKxzlX-UXWHBS36dcHGG0qNWQdls6Kyoqyj_hucuIx30WMtEhwqVYKJYnizyAjGihG-MjfQKF-pN16sz5y3pBN69xp3OoVhIQs4yFKeuAjOSOE2U9x0CwLIxc5U1iaRwfGb5DDDL4VkR6hilJpkx3W3BAsImzdhUoRR3NBKv4_a6T41PULts0lFyA23SYb0pxGM2EQdw
+Content-Type: application/json
+
+{
+  "minAge": 11,
+  "maxAge": 40,
+  "preferences": ["Programming"]
+}
